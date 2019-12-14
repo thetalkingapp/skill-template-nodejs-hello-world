@@ -2,7 +2,25 @@
 
 ### This is a simple "hello world" template for building Alexa skills
 
-This template project is based on the official Hello World template at https://github.com/alexa/skill-sample-nodejs-hello-world. That template, however, has recently become more complicated than what many projects will need as a starting point. This template is a simplified form of that template, offering as simple of a project as possible that can be used as the foundation for any Alexa skill you might create.
+## What is this?
+
+This template project is based on the official Hello World template at https://github.com/alexa/skill-sample-nodejs-hello-world. That template, however, has recently become more complicated than what many projects will need as a starting point. 
+
+This template project is a simplified form of that template, offering a simpler starting point for any Alexa skill you might want to create.
+
+## How do I use it?
+
+You may simply `git clone` this repository and start developing your own skill on top of it. Or you may use the ASK CLI to clone it for you.
+
+If you are using ASK CLI v1 (the one that is commonly used at this time), you will need to use the `--url` parameter to reference a template list JSON file that references this repository. For example:
+
+    $ ask new --url https://starport75.s3.amazonaws.com/templates.json
+
+And select the "Hello World (simple)" template. You'll then be asked to give the project a name; use any name you wish. Then you'll be warned that the template is from an unofficial resource and be asked if you wish to continue. Answer "y" and the project will be created on your machine for you.
+
+If you are using ASK CLI v2 (which at this time is still in beta), there is not yet an equivalent template. Once ASK CLI v2 is released out of beta, this project will be converted appropriately. In the meantime, you can use the `askx util upgrade-to-v2` command to convert this project to ASK CLI v2.
+
+## What's different?
 
 Specifically, this project differs from the official template in the following ways:
 
@@ -14,4 +32,3 @@ Specifically, this project differs from the official template in the following w
  * Removed the call to `.withCustomUserAgent()` in `lambda/custom/index.js` when building the skill. It's unclear what purpose this serves and you can certainly build and deploy a skill without it.
  * Rearranged intent declarations in `models/en-US.json` so that the "HelloWorldIntent" is first and all built-in intents follow. Also put "CancelIntent" and "StopIntent" adjacent to each other since their handler is the same.
 
- 
