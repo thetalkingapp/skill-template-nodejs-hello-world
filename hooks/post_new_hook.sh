@@ -24,8 +24,8 @@ install_dependencies() {
 }
 
 delete_git_files() {
-    rm -rf .git
-    rm -rf .github
+    rm -rf $SKILL_NAME/.git
+    rm -rf $SKILL_NAME/.github
     return $?
 }
 
