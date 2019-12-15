@@ -46,6 +46,9 @@ Foreach ($SOURCE_DIR in $ALL_SOURCE_DIRS) {
     }
 }
 
+Remove-Item -Recurse .git -Force
+Remove-Item -Recurse .github -Force
+
 if ($DO_DEBUG) {
     Write-Output "###########################"
 }

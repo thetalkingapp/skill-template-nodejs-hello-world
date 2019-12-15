@@ -35,6 +35,10 @@ grep "sourceDir" $SKILL_NAME/skill.json | cut -d: -f2 |  sed 's/"//g' | sed 's/,
         exit 1
     fi
 done
+
+rm -rf .git
+rm -rf .github
+
 echo "###########################"
 
 exit 0
