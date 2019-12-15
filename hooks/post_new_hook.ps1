@@ -34,6 +34,10 @@ $ALL_SOURCE_DIRS = Get-Content -Path $SKILL_FILE_PATH | select-string  -Pattern 
 Foreach ($SOURCE_DIR in $ALL_SOURCE_DIRS) {
     $FILTER_SOURCE_DIR = $SOURCE_DIR -replace "`"", "" -replace "\s", "" -replace ",","" -replace "sourceDir:", ""
     $CWD = (Get-Location).Path
+
+    Remove-Item -Recurse .git -Force
+    Remove-Item -Recurse .github -Force
+
     if (install_dependencies $CWD $FILTER_SOURCE_DIR) {
         if ($DO_DEBUG) {
             Write-Output "Codebase ($FILTER_SOURCE_DIR) built successfully."
@@ -45,9 +49,6 @@ Foreach ($SOURCE_DIR in $ALL_SOURCE_DIRS) {
         exit 1
     }
 }
-
-Remove-Item -Recurse .git -Force
-Remove-Item -Recurse .github -Force
 
 if ($DO_DEBUG) {
     Write-Output "###########################"

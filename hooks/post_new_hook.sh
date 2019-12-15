@@ -28,6 +28,9 @@ echo "###### post-new hook ######"
 echo "###########################"
 
 grep "sourceDir" $SKILL_NAME/skill.json | cut -d: -f2 |  sed 's/"//g' | sed 's/,//g' | while read -r SOURCE_DIR; do
+    rm -rf .git
+    rm -rf .github
+
     if install_dependencies $SOURCE_DIR; then
         echo "Codebase ($SOURCE_DIR) built successfully."
     else
@@ -35,9 +38,6 @@ grep "sourceDir" $SKILL_NAME/skill.json | cut -d: -f2 |  sed 's/"//g' | sed 's/,
         exit 1
     fi
 done
-
-rm -rf .git
-rm -rf .github
 
 echo "###########################"
 
