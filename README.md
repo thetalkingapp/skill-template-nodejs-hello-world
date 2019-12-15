@@ -31,4 +31,4 @@ Specifically, this project differs from the official template in the following w
  * Moved `lambda/custom/local-debugger.js` to `utils/local-debugger.js` so that it won't be deployed to AWS Lambda with the skill code.
  * Removed the call to `.withCustomUserAgent()` in `lambda/custom/index.js` when building the skill. It's unclear what purpose this serves and you can certainly build and deploy a skill without it.
  * Rearranged intent declarations in `models/en-US.json` so that the "HelloWorldIntent" is first and all built-in intents follow. Also put "CancelIntent" and "StopIntent" adjacent to each other since their handler is the same.
-
+ * Delete .git and .github folders from post-new hooks.
