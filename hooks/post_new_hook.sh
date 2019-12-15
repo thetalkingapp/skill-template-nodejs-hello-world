@@ -23,18 +23,28 @@ install_dependencies() {
     return $?
 }
 
+delete_git_files() {
+    rm -rf .git
+    rm -rf .github
+    return $?
+}
+
 echo "###########################"
 echo "###### post-new hook ######"
 echo "###########################"
 
 grep "sourceDir" $SKILL_NAME/skill.json | cut -d: -f2 |  sed 's/"//g' | sed 's/,//g' | while read -r SOURCE_DIR; do
-    rm -rf .git
-    rm -rf .github
-
     if install_dependencies $SOURCE_DIR; then
         echo "Codebase ($SOURCE_DIR) built successfully."
     else
         echo "There was a problem installing dependencies for ($SOURCE_DIR)."
+        exit 1
+    fi
+
+    if delete_git_files; then
+        echo "Deleted Git tracking files."
+    else
+        echo "There was a problem deleting Git tracking files."
         exit 1
     fi
 done
