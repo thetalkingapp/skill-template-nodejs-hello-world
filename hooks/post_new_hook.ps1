@@ -35,8 +35,10 @@ Foreach ($SOURCE_DIR in $ALL_SOURCE_DIRS) {
     $FILTER_SOURCE_DIR = $SOURCE_DIR -replace "`"", "" -replace "\s", "" -replace ",","" -replace "sourceDir:", ""
     $CWD = (Get-Location).Path
 
-    Remove-Item -Recurse .git -Force
-    Remove-Item -Recurse .github -Force
+    $DOTGIT = $SKILL_NAME + "\.git"
+    $DOTGITHUB = $SKILL_NAME + "\.github"
+    Remove-Item -Recurse $DOTGIT -Force
+    Remove-Item -Recurse $DOTGITHUB -Force
 
     if (install_dependencies $CWD $FILTER_SOURCE_DIR) {
         if ($DO_DEBUG) {
