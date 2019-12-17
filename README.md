@@ -4,7 +4,7 @@
 
 ## What is this?
 
-This template project is based on the official Hello World template at https://github.com/alexa/skill-sample-nodejs-hello-world. That template, however, has recently become more complicated than what many projects will need as a starting point. 
+This template project is based on the official Hello World template at https://github.com/alexa/skill-sample-nodejs-hello-world. That template, however, has recently become more complicated than what many projects will need as a starting point.
 
 This template project is a simplified form of that template, offering a simpler starting point for any Alexa skill you might want to create.
 
@@ -19,6 +19,21 @@ If you are using ASK CLI v1 (the one that is commonly used at this time), you wi
 And select the "Hello World (simple)" template. You'll then be asked to give the project a name; use any name you wish. Then you'll be warned that the template is from an unofficial resource and be asked if you wish to continue. Answer "y" and the project will be created on your machine for you.
 
 If you are using ASK CLI v2 (which at this time is still in beta), there is not yet an equivalent template. Once ASK CLI v2 is released out of beta, this project will be converted appropriately. In the meantime, you can use the `askx util upgrade-to-v2` command to convert this project to ASK CLI v2.
+
+## What do I do next?
+
+Once the project has been created, you can tweak the skill to do whatever you want. When you're ready, you can use the ASK CLI to deploy it:
+
+    $ ask deploy
+
+After a few moments, it will deployed and ready to try out. You can use your Alexa device to test it or use `ask dialog` to kick the tires:
+
+    $ ask dialog -l en-US
+      User  > open hello world
+      Alexa > Welcome, you can say Hello or Help. Which would you like to try?
+      User  > say hello
+      Alexa > Hello World!
+      User  > !quit
 
 ## What's different?
 
