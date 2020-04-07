@@ -10,6 +10,8 @@ This template project is a simplified form of that template, offering a simpler 
 
 If you find this template useful, you might also want to check out [my book](https://pragprog.com/book/cwalexa/build-talking-apps) where I use this template as the starting point for a skill that is built throughout the book.
 
+And, please follow me on Twitter at [@habuma](https://twitter.com/habuma) (my personal, any topic is fair game handle) and [@thetalkingapp](https://twitter.com/thetalkingapp).
+
 ## How do I use it?
 
 You may simply `git clone` this repository and start developing your own skill on top of it. Or you may use the ASK CLI to clone it for you.
