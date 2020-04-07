@@ -14,7 +14,7 @@ You may simply `git clone` this repository and start developing your own skill o
 
 If you are using ASK CLI v1 (the one that is commonly used at this time), you will need to use the `--url` parameter to reference a template list JSON file that references this repository. For example:
 
-    $ ask new --url https://starport75.s3.amazonaws.com/templates.json
+    $ ask new --url https://thetalkingapp.s3.amazonaws.com/templates.json
 
 And select the "Hello World (simple)" template. You'll then be asked to give the project a name; use any name you wish. Then you'll be warned that the template is from an unofficial resource and be asked if you wish to continue. Answer "y" and the project will be created on your machine for you.
 
