@@ -4,6 +4,18 @@
             "invocationName": "hello world",
             "intents": [
                 {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
                     "name": "HelloWorldIntent",
                     "slots": [],
                     "samples": [
@@ -17,23 +29,12 @@
                     ]
                 },
                 {
-                    "name": "AMAZON.CancelIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.StopIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.HelpIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.FallbackIntent",
+                    "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
                 }
             ],
             "types": []
         }
     }
-}
+  }
+  
