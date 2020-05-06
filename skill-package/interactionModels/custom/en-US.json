@@ -4,18 +4,6 @@
             "invocationName": "hello world",
             "intents": [
                 {
-                    "name": "AMAZON.CancelIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.HelpIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.StopIntent",
-                    "samples": []
-                },
-                {
                     "name": "HelloWorldIntent",
                     "slots": [],
                     "samples": [
@@ -29,8 +17,20 @@
                     ]
                 },
                 {
-                    "name": "AMAZON.NavigateHomeIntent",
+                    "name": "AMAZON.StopIntent",
                     "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                  "name": "AMAZON.FallbackIntent",
+                  "samples": []
                 }
             ],
             "types": []

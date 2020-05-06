@@ -2,46 +2,50 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
+const i18next = require('i18next');
+const languageStrings = require('./languageStrings');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        const speakOutput = handlerInput.t('WELCOME_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
             .getResponse();
     }
 };
+
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello World!';
+        const speakOutput = handlerInput.t('HELLO_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
 };
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
-
+        const speakOutput = handlerInput.t('HELP_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
             .getResponse();
     }
 };
+
 const CancelAndStopIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -49,12 +53,27 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = handlerInput.t('GOODBYE_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
     }
 };
+
+const FallbackIntentHandler = {
+  canHandle(handlerInput) {
+      return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+          && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.FallbackIntent';
+  },
+  handle(handlerInput) {
+      const speakOutput = handlerInput.t('FALLBACK_MSG');
+      return handlerInput.responseBuilder
+          .speak(speakOutput)
+          .reprompt(speakOutput)
+          .getResponse();
+  }
+};
+
 const SessionEndedRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'SessionEndedRequest';
@@ -75,8 +94,8 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-        const speakOutput = `You just triggered ${intentName}`;
-
+        const speakOutput = handlerInput.t('FALLBACK_MSG', { intentName: intentName });
+        
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
@@ -93,13 +112,24 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.stack}`);
-        const speakOutput = `Sorry, I had trouble doing what you asked. Please try again.`;
+        const speakOutput = handlerInput.t('ERROR_MSG');
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
             .getResponse();
     }
+};
+
+const LocalisationRequestInterceptor = {
+  process(handlerInput) {
+      i18next.init({
+          lng: Alexa.getLocale(handlerInput.requestEnvelope),
+          resources: languageStrings
+      }).then((i18n) => {
+          handlerInput.t = (...args) => i18n(...args);
+      });
+  }
 };
 
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
@@ -111,10 +141,14 @@ exports.handler = Alexa.SkillBuilders.custom()
         HelloWorldIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
+        FallbackIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler, // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
         ) 
     .addErrorHandlers(
         ErrorHandler,
         )
+    .addRequestInterceptors(
+        LocalisationRequestInterceptor
+        )  
     .lambda();

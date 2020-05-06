@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "type": "SUBSCRIPTION",
+  "referenceName": "TODO: PROVIDE A REFERENCE NAME FOR THIS PRODUCT",
+  "subscriptionInformation": {
+    "subscriptionPaymentFrequency": "TODO: REPLACE THIS WITH SUBSCRIPTION RENEWAL FREQUENCY - MONTHLY or YEARLY",
+    "subscriptionTrialPeriodDays": 0
+  },
+  "publishingInformation": {
+    "locales": {
+      "en-US": {
+        "name": "TODO: REPLACE THIS WITH PRODUCT NAME THAT ALEXA WILL READ DURING OFFER PRESENTMENT AND WILL SHOW UP IN ORDER TITLE",
+        "smallIconUri": "TODO: REPLACE THIS WITH URI TO A 108 X 108px PNG IMAGE",
+        "largeIconUri": "TODO: REPLACE THIS WITH URI TO A 512 X 512px PNG IMAGE",
+        "summary": "TODO: REPLACE THIS WITH TEXT DESCRIBING WHY THIS IS A VALUABLE PRODUCT",
+        "description": "TODO: REPLACE THIS WITH A LONGFORM PRODUCT DESCRIPTION FOR DISPLAY",
+        "examplePhrases": [
+          "TODO: REPLACE THIS WITH SAMPLE UTTERANCE FOR HOW USERS WILL BUY OR INVOKE THIS PRODUCT - 'Alexa, buy product name'  Or 'Alexa, play product name'"
+        ],
+        "keywords": [
+          "TODO: REPLACE THIS WITH ARRAY OF KEYWORDS TO BE USED FOR SEARCH INDEXING THE PRODUCT"
+        ],
+        "customProductPrompts": {
+          "purchasePromptDescription": "TODO: REPLACE THIS WITH TEXT THAT DIFFERS FROM SUMMARY AND ALEXA WILL USE TO DESCRIBE THE PRODUCT IN THE PURCHASE PROMPT",
+          "boughtCardDescription": "TODO: REPLACE THIS WITH TEXT TO DISPLAY IN APP CARD WHEN CUSTOMER HAS PURCHASED THIS PRODUCT"
+        }
+      }
+    },
+    "distributionCountries": [
+      "US"
+    ],
+    "pricing": {
+      "amazon.com": {
+        "releaseDate": "TODO: REPLACE THIS WITH DATETIME AFTER WHICH YOU WISH THE PRODUCT TO BE PURCHASABLE. FORMAT: \"yyyy-MM-dd'T'HH:mm'Z'\" OR \"yyyy-MM-dd\"",
+        "defaultPriceListing": {
+          "price": 0.99,
+          "currency": "USD"
+        }
+      }
+    },
+    "taxInformation": {
+      "category": "SOFTWARE"
+    }
+  },
+  "privacyAndCompliance": {
+    "locales": {
+      "en-US": {
+        "privacyPolicyUrl": "TODO: REPLACE THIS WITH URL TO YOUR OWN PRIVACY POLICY"
+      }
+    }
+  },
+  "testingInstructions": "TODO: REPLACE THIS WITH TESTING INSTRUCTIONS FOR THE CERTIFICATION TEAM SO THEY KNOW HOW TO PURCHASE AND USE THIS PRODUCT",
+  "purchasableState": "PURCHASABLE"
+}
